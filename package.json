@@ -1,14 +1,21 @@
 {
+  "name": "react",
+  "version": "1.0.0",
+  "description": "React example starter project",
+  "keywords": ["react", "starter"],
+  "dependencies": {
+    "@ar-js-org/ar.js": "^3.4.5",
+    "@artcom/react-three-arjs": "^0.5.6",
+    "@react-three/fiber": "^8.13.4",
+    "core-js": "^3.31.1",
+    "next": "^13.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.154.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
-  },
-  "dependencies": {
-    "aframe-react": "^4.4.0",
-    "next": "^13.4.19",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@ar-js-org/ar.js": "^3.4.5"
   }
 }

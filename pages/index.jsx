@@ -1,24 +1,10 @@
-import {Entity, Scene} from 'aframe-react';
 import Head from 'next/head';
-import '@ar-js-org/ar.js'
+import dynamic from 'next/dynamic'
 
-function DefaultScene() {
-  return (
-    <Scene embedded arjs>
-      <a-assets>
-        <audio src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav" preload="auto"></audio>
-      </a-assets>
-      <a-marker preset="hiro">
-        <Entity
-          position="0 0 0"
-          scale="0.05 0.05 0.05"
-          gltf-model="https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/scene.gltf"
-        ></Entity>
-      </a-marker>
-      <Entity camera></Entity>
-    </Scene>
-  );
-}
+const ARComponentWithNoSSR = dynamic(
+  () => import('../components/default-scene.jsx'),
+  {ssr: false}
+)
 
 export default function HomePage() {
   return (
@@ -29,7 +15,7 @@ export default function HomePage() {
         <title>AR Soundwalk</title>
       </Head>
       <div>
-        <DefaultScene/>
+        <ARComponentWithNoSSR/>
       </div>
     </div>
   );
