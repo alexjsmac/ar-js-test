@@ -8,7 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en' className='antialiased'>
-    <head ><title>AR Soundwalk</title></head>
+    <head />
     <body>{children}</body>
     </html>
   )
