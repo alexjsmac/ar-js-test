@@ -1,3 +1,5 @@
+'use client'
+
 import { ARCanvas, ARMarker } from "@artcom/react-three-arjs";
 import { useState } from "react";
 
