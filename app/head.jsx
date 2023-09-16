@@ -1,5 +1,5 @@
 const title = 'AR Soundwalk'
-const url = 'https://alexmaclean.ca/ar-js-test/'
+const url = 'https://alexmaclean.ca/ar-soundwalk/'
 const description = 'AR Soundwalk project'
 const author = 'Alex MacLean'
 const twitter = '@alexjsmac'
