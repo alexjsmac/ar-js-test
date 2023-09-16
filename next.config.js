@@ -8,4 +8,5 @@ module.exports = {
     unoptimized: true,
   },
   reactStrictMode: true,
+  transpilePackages: ['three']
 }

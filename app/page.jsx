@@ -1,8 +1,10 @@
+'use client'
+
 import Head from 'next/head';
 import dynamic from 'next/dynamic'
 
 const ARComponentWithNoSSR = dynamic(
-  () => import('../components/default-scene.jsx'),
+  () => import('../src/components/default-scene.jsx'),
   {ssr: false}
 )
 
