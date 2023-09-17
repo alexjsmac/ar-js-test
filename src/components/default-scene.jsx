@@ -1,40 +1,56 @@
 'use client'
 
-import { ARCanvas, ARMarker } from '@artcom/react-three-arjs'
-import { useState } from 'react'
+import { Suspense, useState } from 'react'
+import { Interactive, XR, ARButton, Controllers } from '@react-three/xr'
+import { Text } from '@react-three/drei'
+import { Canvas, extend } from '@react-three/fiber'
+import { RoundedBoxGeometry } from 'three-stdlib'
+extend({ RoundedBoxGeometry })
 
-function Box() {
-  const [selected, setSelected] = useState(false)
+function Box({ color, size, scale, children, ...rest }) {
+  return (
+    <mesh scale={scale} {...rest}>
+      <roundedBoxGeometry args={size} />
+      <meshPhongMaterial color={color} />
+      {children}
+    </mesh>
+  )
+}
+
+function Button(props) {
+  const [hover, setHover] = useState(false)
+  const [color, setColor] = useState('blue')
+
+  const onSelect = () => {
+    setColor((Math.random() * 0xffffff) | 0)
+  }
 
   return (
-    <mesh onClick={() => setSelected(!selected)}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={selected ? 'yellow' : 'hotpink'} />
-    </mesh>
+    <Interactive onHover={() => setHover(true)} onBlur={() => setHover(false)} onSelect={onSelect}>
+      <Box color={color} scale={hover ? [0.6, 0.6, 0.6] : [0.5, 0.5, 0.5]} size={[0.4, 0.1, 0.1]} {...props}>
+        <Suspense fallback={null}>
+          <Text position={[0, 0, 0.06]} fontSize={0.05} color='#000' anchorX='center' anchorY='middle'>
+            Hello Greg!
+          </Text>
+        </Suspense>
+      </Box>
+    </Interactive>
   )
 }
 
 function DefaultScene() {
   return (
-    <ARCanvas
-      onCameraStreamReady={() => console.log('Camera stream ready')}
-      onCameraStreamError={() => console.error('Camera stream error')}
-      sourceType={'webcam'}
-    >
-      <ambientLight />
-      <pointLight position={[10, 10, 0]} intensity={10.0} />
-      <ARMarker
-        debug={true}
-        params={{ smooth: true }}
-        type={'pattern'}
-        patternUrl={'data/patt.hiro'}
-        onMarkerFound={() => {
-          console.log('Marker Found')
-        }}
-      >
-        <Box />
-      </ARMarker>
-    </ARCanvas>
+    <>
+      <ARButton />
+      <Canvas>
+        <XR referenceSpace='local'>
+          <ambientLight />
+          <pointLight position={[10, 10, 10]} />
+          <Button position={[0, 0.1, -0.2]} />
+          <Controllers />
+        </XR>
+      </Canvas>
+    </>
   )
 }
 

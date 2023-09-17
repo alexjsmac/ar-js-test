@@ -1,9 +1,7 @@
 'use client'
 
 import Head from 'next/head'
-import dynamic from 'next/dynamic'
-
-const ARComponentWithNoSSR = dynamic(() => import('../src/components/default-scene.jsx'), { ssr: false })
+import DefaultScene from '@/components/default-scene'
 
 export default function HomePage() {
   return (
@@ -14,7 +12,7 @@ export default function HomePage() {
         <title>AR Soundwalk</title>
       </Head>
       <div>
-        <ARComponentWithNoSSR />
+        <DefaultScene />
       </div>
     </div>
   )

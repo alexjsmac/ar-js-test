@@ -7,7 +7,14 @@
   "private": true,
   "license": "GPL-3.0-or-later",
   "description": "AR Soundwalk",
-  "keywords": ["react", "ar", "threejs", "webxr", "webgl", "nextjs"],
+  "keywords": [
+    "react",
+    "ar",
+    "threejs",
+    "webxr",
+    "webgl",
+    "nextjs"
+  ],
   "scripts": {
     "lint": "next lint --fix --dir app",
     "dev": "next dev",
@@ -16,14 +23,15 @@
     "start": "next start"
   },
   "dependencies": {
-    "@ar-js-org/ar.js": "^3.4.5",
-    "@artcom/react-three-arjs": "^0.5.6",
+    "@react-three/drei": "^9.78.1",
     "@react-three/fiber": "^8.13.4",
-    "core-js": "^3.31.1",
+    "@react-three/xr": "^5.0.3",
     "next": "^13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "three": "^0.154.0"
+    "three": "^0.154.0",
+    "three-stdlib": "^2.26.0",
+    "troika-3d-text": "^0.42.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.4.13",
@@ -40,5 +48,11 @@
     "raw-loader": "^4.0.2",
     "tailwindcss": "^3.3.3",
     "url-loader": "^4.1.1"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
