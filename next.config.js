@@ -3,14 +3,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 /**
- * A fork of 'next-pwa' that has app directory support
- * @see https://github.com/shadowwalker/next-pwa/issues/424#issuecomment-1332258575
+ * @type {import('next').NextConfig}
  */
-const withPWA = require('@ducanh2912/next-pwa').default({
-  dest: 'public',
-  disable: process.env.NODE_ENV === 'development',
-})
-
 const nextConfig = {
   // uncomment the following snippet if using styled components
   // compiler: {
@@ -18,7 +12,6 @@ const nextConfig = {
   // },
   reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
   experimental: {
-    reactRoot: 'concurrent',
     appDir: true,
   },
   images: {},
@@ -60,7 +53,7 @@ const nextConfig = {
 const KEYS_TO_OMIT = ['webpackDevMiddleware', 'configOrigin', 'target', 'analyticsId', 'webpack5', 'amp', 'assetPrefix']
 
 module.exports = (_phase, { defaultConfig }) => {
-  const plugins = [[withPWA], [withBundleAnalyzer, {}]]
+  const plugins = [[withBundleAnalyzer, {}]]
 
   const wConfig = plugins.reduce((acc, [plugin, config]) => plugin({ ...acc, ...config }), {
     ...defaultConfig,
