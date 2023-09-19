@@ -32,7 +32,8 @@
     "react-dom": "^18.2.0",
     "three": "^0.154.0",
     "three-stdlib": "^2.26.0",
-    "troika-3d-text": "^0.42.0"
+    "troika-3d-text": "^0.42.0",
+    "tunnel-rat": "^0.1.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.4.13",
