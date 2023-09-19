@@ -5,9 +5,7 @@ const ARComponentWithNoSSR = dynamic(() => import('@/components/default-scene.js
 export default function HomePage() {
   return (
     <div style={{ height: '100%', width: '100%' }}>
-      <div>
-        <ARComponentWithNoSSR />
-      </div>
+      <ARComponentWithNoSSR />
     </div>
   )
 }
